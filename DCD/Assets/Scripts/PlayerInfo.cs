@@ -11,9 +11,12 @@ public class PlayerInfo : MonoBehaviour {
     [Range(1,2)] public int playerNumber;
 
     [HideInInspector] public PlayerInputActions inputAction;
+    public float inputThreshold;
+
     [HideInInspector] public Vector2 moveInput;
     [HideInInspector] public float jumpInput;
-    [HideInInspector] public float inputThreshold = 0.1f;
+    [HideInInspector] public float dashInput;
+
 
 
     void Awake() {
@@ -27,9 +30,11 @@ public class PlayerInfo : MonoBehaviour {
         if (playerNumber == 1) {
             inputAction.PlayerControls.P1Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
             inputAction.PlayerControls.P1Jump.performed += ctx => jumpInput = ctx.ReadValue<float>();
+            inputAction.PlayerControls.P1Dash.performed += ctx => dashInput = ctx.ReadValue<float>();
         } else if (playerNumber == 2) {
             inputAction.PlayerControls.P2Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
             inputAction.PlayerControls.P2Jump.performed += ctx => jumpInput = ctx.ReadValue<float>();
+            inputAction.PlayerControls.P2Dash.performed += ctx => dashInput = ctx.ReadValue<float>();
         }
 
 

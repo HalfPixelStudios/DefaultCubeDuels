@@ -36,9 +36,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""P1Dash"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""b80dbc60-2a89-4032-85e9-6a406a1a8f94"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -60,9 +60,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""P2Dash"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""57f5566f-182e-4c24-a1d8-5f35fd8813a2"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -171,7 +171,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""1a8524f3-2897-4bf0-bd9b-0be73f10d0bf"",
                     ""path"": ""<XInputController>/rightTrigger"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""Xbox Gamepad"",
                     ""action"": ""P2Dash"",

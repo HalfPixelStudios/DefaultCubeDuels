@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Timer))]
 public class BasicJump : MonoBehaviour {
 
     //Info
@@ -19,7 +20,7 @@ public class BasicJump : MonoBehaviour {
         info = gameObject.GetComponentInParent<PlayerInfo>();
 
         //Jump
-        jumpTimer = jumpTrigger.GetComponent<Timer>();
+        jumpTimer = GetComponent<Timer>();
         jumpTimer.duration = max_hold_time;
     }
 

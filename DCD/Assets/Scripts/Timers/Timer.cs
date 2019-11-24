@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour {
 
-    public float cooldown;
-    public float duration;
+    [HideInInspector] public float cooldown;
+    [HideInInspector] public float duration;
 
-    [SerializeField] protected float cooldown_counter;
-    [SerializeField] protected float duration_counter;
+    [HideInInspector] protected float cooldown_counter;
+    [HideInInspector] protected float duration_counter;
 
     public bool isActive;
 
