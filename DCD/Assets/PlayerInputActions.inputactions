@@ -22,6 +22,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "P1Dash",
+                    "type": "Button",
+                    "id": "b80dbc60-2a89-4032-85e9-6a406a1a8f94",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "P2Move",
                     "type": "PassThrough",
                     "id": "10872b97-2472-4632-bf9c-74b4ce85b273",
@@ -34,6 +42,14 @@
                     "type": "PassThrough",
                     "id": "ae9de151-a5a8-422c-8f72-8b2dc0eb4d0a",
                     "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "P2Dash",
+                    "type": "Button",
+                    "id": "57f5566f-182e-4c24-a1d8-5f35fd8813a2",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -124,6 +140,28 @@
                     "processors": "",
                     "groups": "Xbox Gamepad",
                     "action": "P2Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "076e22b2-81b7-4199-8676-c631b02122d2",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "P1Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1a8524f3-2897-4bf0-bd9b-0be73f10d0bf",
+                    "path": "<XInputController>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Gamepad",
+                    "action": "P2Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
