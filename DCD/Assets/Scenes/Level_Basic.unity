@@ -369,10 +369,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 1
-  move_speed: 5
+  move_speed: 4
+  horizontal_drag: 0.9
   jumpTrigger: {fileID: 1385194349}
+  max_hold_time: 0.15
   fall_g_multiplier: 3.5
-  lowJump_g_multiplier: 2
+  lowJump_g_multiplier: 3
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,8 +448,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.4410304e-19, y: 1.0899629e+27, z: 1.6672163e+19,
-    w: 7.493675e+31}
+  m_BoundingSphereOverride: {x: 0, y: 9.1837e-41, z: -1.177e-42, w: -5.98e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -514,10 +515,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNumber: 2
-  move_speed: 5
-  jumpTrigger: {fileID: 1543778491}
+  move_speed: 4
+  horizontal_drag: 0.9
+  jumpTrigger: {fileID: 1385194349}
+  max_hold_time: 0.15
   fall_g_multiplier: 3.5
-  lowJump_g_multiplier: 2
+  lowJump_g_multiplier: 3
 --- !u!54 &941727698
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -696,10 +699,10 @@ MonoBehaviour:
   depthUpdateSpeed: 2
   angleUpdateSpeed: 2
   positionUpdateSpeed: 2
-  min_depth: -8
-  max_depth: -20
-  min_angle: 0
-  max_angle: 0
+  min_depth: -25
+  max_depth: -8
+  min_angle: 3
+  max_angle: 11
 --- !u!1 &1385194349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5973ce63ece94884498f1b37f70b9d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dims: {x: 20, y: 20, z: 20}
+  dims: {x: 40, y: 15, z: 5}
   bound:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}

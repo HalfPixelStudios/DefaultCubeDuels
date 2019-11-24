@@ -17,4 +17,10 @@ public class FocusBounds : MonoBehaviour {
         b.Encapsulate(new Vector3(pos.x - dims.x / 2, pos.y - dims.y / 2, pos.z - dims.z / 2));
         bound = b;
     }
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.cyan;
+
+        Gizmos.DrawWireCube(transform.position,dims);
+    }
 }

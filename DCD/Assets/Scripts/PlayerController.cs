@@ -17,13 +17,15 @@ public class PlayerController : MonoBehaviour {
     float inputThreshold = 0.1f;
 
     //Movement
-    public float move_speed = 5f;
+    public float move_speed;
+    [Range(0f,1f)] public float horizontal_drag;
 
     //Jump
     public GameObject jumpTrigger;
+    public float max_hold_time;
     Timer jumpTimer;
-    public float fall_g_multiplier = 2.5f;
-    public float lowJump_g_multiplier = 2f;
+    public float fall_g_multiplier;
+    public float lowJump_g_multiplier;
 
     void Awake() {
 
@@ -43,7 +45,8 @@ public class PlayerController : MonoBehaviour {
 
         //Jump
         jumpTimer = jumpTrigger.GetComponent<Timer>();
-        jumpTimer.duration = 0.15f;
+        jumpTimer.duration = max_hold_time;
+
     }
 
     void Update() {
@@ -51,6 +54,10 @@ public class PlayerController : MonoBehaviour {
         //MOVEMENT
         if (Mathf.Abs(moveInput.x) >= inputThreshold) {
             rb.velocity = new Vector3(moveInput.x * move_speed, rb.velocity.y, rb.velocity.z);
+        }
+  
+        if (Mathf.Abs(rb.velocity.x) >= 0.1f) { //applying some horizontal damping
+            rb.velocity = new Vector3(rb.velocity.x*horizontal_drag, rb.velocity.y, rb.velocity.z);
         }
 
         //JUMP
