@@ -9,6 +9,7 @@ public class GlobalContainer : MonoBehaviour {
 
     public List<int> ground_layers;
 
+    public int pickup_layer;
 
     void Awake() {
         self = this;

@@ -32,6 +32,8 @@ public class FocusCamera : MonoBehaviour {
         MoveCam();
     }
 
+
+    //TODO: possibly give all players in bounds a weight of 2, and the map center and players out of bound a weight of 1
     private void MoveCam() {
         Vector3 cur_pos = gameObject.transform.position;
         if (cur_pos != target_pos) {
