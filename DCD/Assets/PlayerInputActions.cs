@@ -19,7 +19,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
             ""id"": ""053c4a8b-8442-4d21-bb59-81dd3c832d31"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""P1Move"",
                     ""type"": ""PassThrough"",
                     ""id"": ""d3e78517-45b5-4d7b-8cc5-ddd0af4ca672"",
                     ""expectedControlType"": ""Vector2"",
@@ -27,9 +27,25 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""P1Jump"",
                     ""type"": ""PassThrough"",
                     ""id"": ""9fd9f99a-05a1-4c88-ab46-78d3ae4ad970"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""P2Move"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""10872b97-2472-4632-bf9c-74b4ce85b273"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""P2Jump"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""ae9de151-a5a8-422c-8f72-8b2dc0eb4d0a"",
                     ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -43,7 +59,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""P1Move"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -54,7 +70,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and mouse"",
-                    ""action"": ""Move"",
+                    ""action"": ""P1Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -65,7 +81,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and mouse"",
-                    ""action"": ""Move"",
+                    ""action"": ""P1Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -76,7 +92,51 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and mouse"",
-                    ""action"": ""Jump"",
+                    ""action"": ""P1Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""AnalogStick"",
+                    ""id"": ""d0db1cfb-f128-470a-ba3d-dc83b74c52ee"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""P2Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""bf831299-7067-4cfa-8941-f3eadee4982c"",
+                    ""path"": ""<XInputController>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox Gamepad"",
+                    ""action"": ""P2Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""95d91f9e-6ed2-49d8-a45d-b56aa5fb560b"",
+                    ""path"": ""<XInputController>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox Gamepad"",
+                    ""action"": ""P2Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b4faf7e-f433-4ff3-8a7f-01748b0e409c"",
+                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox Gamepad"",
+                    ""action"": ""P2Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -99,13 +159,26 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Xbox Gamepad"",
+            ""bindingGroup"": ""Xbox Gamepad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<XInputController>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
         // PlayerControls
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
-        m_PlayerControls_Move = m_PlayerControls.FindAction("Move", throwIfNotFound: true);
-        m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerControls_P1Move = m_PlayerControls.FindAction("P1Move", throwIfNotFound: true);
+        m_PlayerControls_P1Jump = m_PlayerControls.FindAction("P1Jump", throwIfNotFound: true);
+        m_PlayerControls_P2Move = m_PlayerControls.FindAction("P2Move", throwIfNotFound: true);
+        m_PlayerControls_P2Jump = m_PlayerControls.FindAction("P2Jump", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -155,14 +228,18 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     // PlayerControls
     private readonly InputActionMap m_PlayerControls;
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
-    private readonly InputAction m_PlayerControls_Move;
-    private readonly InputAction m_PlayerControls_Jump;
+    private readonly InputAction m_PlayerControls_P1Move;
+    private readonly InputAction m_PlayerControls_P1Jump;
+    private readonly InputAction m_PlayerControls_P2Move;
+    private readonly InputAction m_PlayerControls_P2Jump;
     public struct PlayerControlsActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_PlayerControls_Move;
-        public InputAction @Jump => m_Wrapper.m_PlayerControls_Jump;
+        public InputAction @P1Move => m_Wrapper.m_PlayerControls_P1Move;
+        public InputAction @P1Jump => m_Wrapper.m_PlayerControls_P1Jump;
+        public InputAction @P2Move => m_Wrapper.m_PlayerControls_P2Move;
+        public InputAction @P2Jump => m_Wrapper.m_PlayerControls_P2Jump;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -172,22 +249,34 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_PlayerControlsActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMove;
-                @Jump.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
+                @P1Move.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Move;
+                @P1Move.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Move;
+                @P1Move.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Move;
+                @P1Jump.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Jump;
+                @P1Jump.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Jump;
+                @P1Jump.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Jump;
+                @P2Move.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Move;
+                @P2Move.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Move;
+                @P2Move.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Move;
+                @P2Jump.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Jump;
+                @P2Jump.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Jump;
+                @P2Jump.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Jump;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
+                @P1Move.started += instance.OnP1Move;
+                @P1Move.performed += instance.OnP1Move;
+                @P1Move.canceled += instance.OnP1Move;
+                @P1Jump.started += instance.OnP1Jump;
+                @P1Jump.performed += instance.OnP1Jump;
+                @P1Jump.canceled += instance.OnP1Jump;
+                @P2Move.started += instance.OnP2Move;
+                @P2Move.performed += instance.OnP2Move;
+                @P2Move.canceled += instance.OnP2Move;
+                @P2Jump.started += instance.OnP2Jump;
+                @P2Jump.performed += instance.OnP2Jump;
+                @P2Jump.canceled += instance.OnP2Jump;
             }
         }
     }
@@ -201,9 +290,20 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_KeyboardandmouseSchemeIndex];
         }
     }
+    private int m_XboxGamepadSchemeIndex = -1;
+    public InputControlScheme XboxGamepadScheme
+    {
+        get
+        {
+            if (m_XboxGamepadSchemeIndex == -1) m_XboxGamepadSchemeIndex = asset.FindControlSchemeIndex("Xbox Gamepad");
+            return asset.controlSchemes[m_XboxGamepadSchemeIndex];
+        }
+    }
     public interface IPlayerControlsActions
     {
-        void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnP1Move(InputAction.CallbackContext context);
+        void OnP1Jump(InputAction.CallbackContext context);
+        void OnP2Move(InputAction.CallbackContext context);
+        void OnP2Jump(InputAction.CallbackContext context);
     }
 }

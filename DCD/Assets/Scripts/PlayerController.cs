@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rb;
 
     //Input
+    [Range(1,2)] public int playerNumber;
+
     PlayerInputActions inputAction;
     Vector2 moveInput;
     float jumpInput;
@@ -31,8 +33,13 @@ public class PlayerController : MonoBehaviour {
         //Input
         inputAction = new PlayerInputActions();
 
-        inputAction.PlayerControls.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        inputAction.PlayerControls.Jump.performed += ctx => jumpInput =  ctx.ReadValue<float>();
+        if (playerNumber == 1) {
+            inputAction.PlayerControls.P1Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+            inputAction.PlayerControls.P1Jump.performed += ctx => jumpInput = ctx.ReadValue<float>();
+        } else if (playerNumber == 2) {
+            inputAction.PlayerControls.P2Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+            inputAction.PlayerControls.P2Jump.performed += ctx => jumpInput = ctx.ReadValue<float>();
+        }
 
         //Jump
         jumpTimer = jumpTrigger.GetComponent<Timer>();

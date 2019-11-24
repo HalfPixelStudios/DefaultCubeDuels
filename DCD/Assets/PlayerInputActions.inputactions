@@ -6,7 +6,7 @@
             "id": "053c4a8b-8442-4d21-bb59-81dd3c832d31",
             "actions": [
                 {
-                    "name": "Move",
+                    "name": "P1Move",
                     "type": "PassThrough",
                     "id": "d3e78517-45b5-4d7b-8cc5-ddd0af4ca672",
                     "expectedControlType": "Vector2",
@@ -14,9 +14,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Jump",
+                    "name": "P1Jump",
                     "type": "PassThrough",
                     "id": "9fd9f99a-05a1-4c88-ab46-78d3ae4ad970",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "P2Move",
+                    "type": "PassThrough",
+                    "id": "10872b97-2472-4632-bf9c-74b4ce85b273",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "P2Jump",
+                    "type": "PassThrough",
+                    "id": "ae9de151-a5a8-422c-8f72-8b2dc0eb4d0a",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": ""
@@ -30,7 +46,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "P1Move",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -41,7 +57,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and mouse",
-                    "action": "Move",
+                    "action": "P1Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -52,7 +68,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and mouse",
-                    "action": "Move",
+                    "action": "P1Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -63,7 +79,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and mouse",
-                    "action": "Jump",
+                    "action": "P1Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "AnalogStick",
+                    "id": "d0db1cfb-f128-470a-ba3d-dc83b74c52ee",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "P2Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "left",
+                    "id": "bf831299-7067-4cfa-8941-f3eadee4982c",
+                    "path": "<XInputController>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Gamepad",
+                    "action": "P2Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "95d91f9e-6ed2-49d8-a45d-b56aa5fb560b",
+                    "path": "<XInputController>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Gamepad",
+                    "action": "P2Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "5b4faf7e-f433-4ff3-8a7f-01748b0e409c",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Gamepad",
+                    "action": "P2Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -82,6 +142,17 @@
                 },
                 {
                     "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Xbox Gamepad",
+            "bindingGroup": "Xbox Gamepad",
+            "devices": [
+                {
+                    "devicePath": "<XInputController>",
                     "isOptional": false,
                     "isOR": false
                 }
