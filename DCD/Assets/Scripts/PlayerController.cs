@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
 
         //Jump
         jumpTimer = jumpTrigger.GetComponent<Timer>();
-        jumpTimer.duration = 0.2f;
+        jumpTimer.duration = 0.15f;
     }
 
     void Update() {
