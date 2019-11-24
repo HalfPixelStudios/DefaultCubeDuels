@@ -31,16 +31,14 @@ public class Dash : Timer {
         if (Mathf.Abs(info.dashInput) >= info.inputThreshold && !isActive) {
             activate();
         }
-        
-    }
 
-    public override void activate() {
-        base.activate();
+        if (Mathf.Abs(info.moveInput.x) >= info.inputThreshold) { //update direction to dash in
+            dash_direct = info.moveInput.x / Mathf.Abs(info.moveInput.x); //normalize the input
+        }
         
-        if (Mathf.Abs(info.moveInput.x) < info.inputThreshold) { return; }
-        dash_direct = info.moveInput.x / Mathf.Abs(info.moveInput.x); //normalize the input
 
     }
+
 
     public override void passiveEffect() {
         info.moveInput.x = 0; //kinda brute force, but this wrestles control out of the move ability (CHANGE LATER)
