@@ -171,7 +171,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""1a8524f3-2897-4bf0-bd9b-0be73f10d0bf"",
                     ""path"": ""<XInputController>/rightTrigger"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox Gamepad"",
                     ""action"": ""P2Dash"",
