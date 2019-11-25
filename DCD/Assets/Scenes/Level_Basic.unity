@@ -378,7 +378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 404137392}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.7}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 570126301}
@@ -515,7 +515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickup_radius: 1
   hold_point: {fileID: 404137392}
-  throw_strength: 0
+  hold_radius: 0
+  throw_strength: 2
 --- !u!1 &570126300
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,6 +646,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   playerNumber: 1
   inputThreshold: 0.1
+  mouse_angle: 0
+  cursorInput: {x: 0, y: 0}
   moveInput: {x: 0, y: 0}
   jumpInput: 0
   dashInput: 0
@@ -786,7 +789,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 2.75508e-40, z: -1.14e-42, w: -1.49e-43}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0

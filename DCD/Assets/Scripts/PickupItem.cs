@@ -10,6 +10,7 @@ public class PickupItem : MonoBehaviour {
 
     public float pickup_radius;
     public GameObject hold_point;
+    public float hold_radius;
 
     public float throw_strength;
 
@@ -17,6 +18,7 @@ public class PickupItem : MonoBehaviour {
 
     void Start() {
         info = GetComponentInParent<PlayerInfo>();
+
     }
 
     void Update() {
@@ -29,6 +31,7 @@ public class PickupItem : MonoBehaviour {
             pickup.transform.parent = hold_point.transform;
             pickup.transform.localPosition = -pickup.GetComponent<GrabableObject>().getHoldPoint();
             pickup.GetComponent<Rigidbody>().isKinematic = true;
+            pickup.GetComponent<Collider>().isTrigger = true;
             
         }
 
@@ -36,11 +39,25 @@ public class PickupItem : MonoBehaviour {
            
             equipped_item.transform.parent = null;
             equipped_item.GetComponent<Rigidbody>().isKinematic = false;
-
+            equipped_item.GetComponent<Collider>().isTrigger = false;
             equipped_item = null;
+        }
+
+        //Make item point towards cursor
+        if (equipped_item != null) {
+            
+            //Vector3 pivot = transform.position;
+            //equipped_item.transform.RotateAround(pivot,Vector3.forward, Time.deltaTime);
+            //equipped_item.transform.localPosition += Vector3.right * Mathf.PingPong(Time.deltaTime * 1, 1);
+            float x = Mathf.Lerp(0, 3, Mathf.PingPong(Time.time,1));
+            equipped_item.transform.localPosition = new Vector3(x, 0, 0);
+
         }
     }
 
+    private void softplus() {
+
+    }
     
     private GameObject getClosestPickup() { 
         //Note: the layer mask is just to help limit the amount of things we are looking through

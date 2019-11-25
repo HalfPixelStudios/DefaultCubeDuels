@@ -84,6 +84,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "P2Aim",
+                    "type": "PassThrough",
+                    "id": "4129eb83-2fd9-484e-bc69-699572448e6d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -238,6 +246,17 @@
                     "processors": "",
                     "groups": "Xbox Gamepad",
                     "action": "P2Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86a34724-ccbe-435f-bfec-649f12f359de",
+                    "path": "<XInputController>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Gamepad",
+                    "action": "P2Aim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
