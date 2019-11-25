@@ -2,28 +2,56 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Handles picking up and throwing items
+
 public class PickupItem : MonoBehaviour {
 
+    PlayerInfo info;
+
     public float pickup_radius;
+    public GameObject hold_point;
+
+    public float throw_strength;
+
+    GameObject equipped_item;
 
     void Start() {
-        
+        info = GetComponentInParent<PlayerInfo>();
     }
 
     void Update() {
-        Debug.Log(getClosestPickup());
+
+        if (info.interactInput >= info.inputThreshold) { //if player presses the interact button
+            GameObject pickup = getClosestPickup();
+            if (pickup == null) { return; }
+
+            equipped_item = pickup;
+            pickup.transform.parent = hold_point.transform;
+            pickup.transform.localPosition = -pickup.GetComponent<GrabableObject>().getHoldPoint();
+            pickup.GetComponent<Rigidbody>().isKinematic = true;
+            
+        }
+
+        if (info.throwInput >= info.inputThreshold && equipped_item != null) { //throw item
+           
+            equipped_item.transform.parent = null;
+            equipped_item.GetComponent<Rigidbody>().isKinematic = false;
+
+            equipped_item = null;
+        }
     }
 
     
     private GameObject getClosestPickup() { 
-        Collider[] cols = Physics.OverlapSphere(transform.position,pickup_radius, 1 << GlobalContainer.self.pickup_layer); //only look for colliders in pickup layer
+        //Note: the layer mask is just to help limit the amount of things we are looking through
+        Collider[] cols = Physics.OverlapSphere(transform.position,pickup_radius); 
 
         float best_dist = Mathf.Infinity;
         GameObject best_collider_object = null;
         foreach (Collider c in cols) {
 
             float dist = Vector3.Distance(transform.position,c.gameObject.transform.position);
-            if (dist < best_dist) {
+            if (c.gameObject.GetComponent<GrabableObject>() != null && dist < best_dist) {
                 best_dist = dist;
                 best_collider_object = c.gameObject;
             }

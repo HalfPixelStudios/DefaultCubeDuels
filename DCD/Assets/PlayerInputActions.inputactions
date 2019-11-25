@@ -30,6 +30,22 @@
                     "interactions": ""
                 },
                 {
+                    "name": "P1Interact",
+                    "type": "PassThrough",
+                    "id": "eaad41e6-ec58-4f74-92d9-d22212f333fb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "P1Throw",
+                    "type": "PassThrough",
+                    "id": "55a4251a-354e-4611-8c28-8ddac8a19faa",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "P2Move",
                     "type": "PassThrough",
                     "id": "10872b97-2472-4632-bf9c-74b4ce85b273",
@@ -50,6 +66,22 @@
                     "type": "PassThrough",
                     "id": "57f5566f-182e-4c24-a1d8-5f35fd8813a2",
                     "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "P2Interact",
+                    "type": "PassThrough",
+                    "id": "363863ac-5b2b-4172-88db-8315e0360680",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "P2Throw",
+                    "type": "Button",
+                    "id": "030876ff-8bad-41d1-93aa-6be5214d699d",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
                 }
@@ -162,6 +194,50 @@
                     "processors": "",
                     "groups": "Xbox Gamepad",
                     "action": "P2Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8d0cdbef-b6d6-4405-848d-59fde7eea863",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "P1Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9fd9b44c-ab9e-4e08-aa51-d2e78ad21fbe",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Gamepad",
+                    "action": "P2Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eef64b8a-6fa2-487d-a645-76bf5d5e95a9",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "P1Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6ee0f93-d961-4c01-80df-56209767c097",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Gamepad",
+                    "action": "P2Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

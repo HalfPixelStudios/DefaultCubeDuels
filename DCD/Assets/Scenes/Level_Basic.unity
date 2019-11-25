@@ -331,7 +331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 383435585}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,6 +514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickup_radius: 1
+  hold_point: {fileID: 404137392}
+  throw_strength: 0
 --- !u!1 &570126300
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +648,8 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   jumpInput: 0
   dashInput: 0
+  interactInput: 0
+  throwInput: 0
 --- !u!1 &645899945
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ground_layers: 08000000
-  pickup_layer: 9
 --- !u!1 &1616518488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1317,7 +1320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1616518489}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: grab_point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1650,7 +1653,7 @@ GameObject:
   - component: {fileID: 1210227761646143787}
   - component: {fileID: 2899908431096044020}
   - component: {fileID: 2394498731051165196}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Group 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1716,7 +1719,7 @@ GameObject:
   - component: {fileID: 8652380847515939618}
   - component: {fileID: 1215558888127457368}
   - component: {fileID: 5160442229652336806}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1788,7 +1791,8 @@ GameObject:
   - component: {fileID: 5006512734922333487}
   - component: {fileID: 8296172669067669310}
   - component: {fileID: 8296172669067669309}
-  m_Layer: 9
+  - component: {fileID: 8296172669067669311}
+  m_Layer: 0
   m_Name: pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1803,7 +1807,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172669067669308}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.7, z: 0.8}
@@ -1823,6 +1827,22 @@ MonoBehaviour:
   two_hand_hold: 0
   grab_point: {fileID: 1616518488}
   owner: {fileID: 0}
+--- !u!54 &8296172669067669311
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172669067669308}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &8652380847515939618
 Transform:
   m_ObjectHideFlags: 0

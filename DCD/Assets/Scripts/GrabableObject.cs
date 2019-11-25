@@ -9,4 +9,7 @@ public class GrabableObject : MonoBehaviour {
 
     [HideInInspector] public GameObject owner;
    
+    public Vector3 getHoldPoint() {
+        return grab_point.transform.localPosition;
+    }
 }
