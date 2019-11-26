@@ -13,7 +13,7 @@ public class PlayerInfo : MonoBehaviour {
     [HideInInspector] public PlayerInputActions inputAction;
     public float inputThreshold;
 
-    public float mouse_angle; //in radians
+    public float mouse_angle; //in degrees
     [HideInInspector] public Vector2 cursorInput; //ONLY FOR CONTROLLERS
     [HideInInspector] public Vector2 moveInput;
     [HideInInspector] public float jumpInput;
@@ -61,13 +61,13 @@ public class PlayerInfo : MonoBehaviour {
             float dist_to_plane;
             if (surface.Raycast(mouse_ray,out dist_to_plane)) {
                 Vector3 mouse_pos = mouse_ray.GetPoint(dist_to_plane);
-                mouse_angle = Mathf.Atan2(mouse_pos.y-transform.position.y,mouse_pos.x-transform.position.x);
+                mouse_angle = Mathf.Atan2(mouse_pos.y-transform.position.y,mouse_pos.x-transform.position.x)*Mathf.Rad2Deg;
             }
 
         } else if (playerNumber == 2 && cursorInput != Vector2.zero) {
-            mouse_angle = Mathf.Atan2(cursorInput.y,cursorInput.x);
+            mouse_angle = Mathf.Atan2(cursorInput.y,cursorInput.x) * Mathf.Rad2Deg;
         }
-        Debug.Log(mouse_angle);
+        //Debug.Log(mouse_angle);
     }
 
     private void OnDrawGizmos() {
