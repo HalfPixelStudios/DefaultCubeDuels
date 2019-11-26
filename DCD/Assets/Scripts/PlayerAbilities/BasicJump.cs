@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Timer))]
 public class BasicJump : MonoBehaviour {
@@ -10,10 +11,7 @@ public class BasicJump : MonoBehaviour {
 
     //Jump
     public GameObject jumpTrigger;
-    public float max_hold_time;
-    public float fall_g_multiplier;
-    public float lowJump_g_multiplier;
-
+    [SerializeField] private float maxHoldTime, fallGFactor, lowJumpGFactor;
     Timer jumpTimer;
 
     void Start() {
@@ -21,7 +19,7 @@ public class BasicJump : MonoBehaviour {
 
         //Jump
         jumpTimer = GetComponent<Timer>();
-        jumpTimer.duration = max_hold_time;
+        jumpTimer.duration = maxHoldTime;
     }
 
     void Update() {
@@ -40,9 +38,9 @@ public class BasicJump : MonoBehaviour {
 
         //modify gravity for jump
         if (info.rb.velocity.y < 0) { //if player is falling, apply gravity scale
-            info.rb.velocity += Vector3.up * Physics.gravity.y * (fall_g_multiplier - 1) * Time.deltaTime;
+            info.rb.velocity += Vector3.up * Physics.gravity.y * (fallGFactor - 1) * Time.deltaTime;
         } else if (info.rb.velocity.y > 0 && info.jumpInput < info.inputThreshold) {
-            info.rb.velocity += Vector3.up * Physics.gravity.y * (lowJump_g_multiplier - 1) * Time.deltaTime;
+            info.rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpGFactor - 1) * Time.deltaTime;
         }
 
     }

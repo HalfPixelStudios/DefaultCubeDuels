@@ -28,6 +28,10 @@ public class BasicMove : MonoBehaviour {
             info.rb.velocity = new Vector3(info.rb.velocity.x * horizontal_drag, info.rb.velocity.y, info.rb.velocity.z);
 
         }
+        else
+        {
+            info.rb.velocity = new Vector3(0,info.rb.velocity.y,info.rb.velocity.z);
+        }
 
         //max speed
         //info.rb.velocity = new Vector3(Mathf.Clamp(info.rb.velocity.x, -max_speed, max_speed),info.rb.velocity.y, info.rb.velocity.z);
