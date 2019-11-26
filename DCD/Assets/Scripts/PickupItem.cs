@@ -45,40 +45,15 @@ public class PickupItem : MonoBehaviour {
 
         //Make item point towards cursor
         //if (equipped_item != null && Mathf.Abs(equipped_item.transform.rotation.x - info.mouse_angle) > 5) {
-        if (equipped_item != null) {
+        if (equipped_item != null)
+        {
 
-            float deltaAngle = info.mouse_angle - equipped_item.transform.localRotation.x * Mathf.Rad2Deg;
-            Debug.Log(deltaAngle);
-            hold_point.transform.localPosition = rotateAroundPoint(hold_point.transform.localPosition, Vector3.zero,new Vector3(0,0,deltaAngle));
-            //hold_point.transform.localRotation = Quaternion.AngleAxis(Mathf.DeltaAngle(cur_angle, info.mouse_angle), transform.position);
-            //hold_point.transform.position = 
+            float xComp = Mathf.Cos(Mathf.Deg2Rad * info.mouse_angle);
+            float yComp = Mathf.Sin(Mathf.Deg2Rad * info.mouse_angle);
+            hold_point.transform.localPosition=
+                new Vector3( xComp, yComp, hold_point.transform.position.z);
+            hold_point.transform.rotation=Quaternion.Euler(info.mouse_angle,-90,0);
 
-
-
-
-            //equipped_item.transform.RotateAround(transform.position, Vector3.forward, Time.deltaTime * Mathf.DeltaAngle(cur_angle, info.mouse_angle));
-            //equipped_item.transform.localRotation = Quaternion.AngleAxis(Mathf.DeltaAngle(cur_angle, info.mouse_angle),Vector3.forward);
-            //Quaternion.Euler(info.mouse_angle,0,0);
-
-
-
-
-            //Debug.Log(Mathf.DeltaAngle(equipped_item.transform.rotation.x, info.mouse_angle));
-            //Debug.Log(equipped_item.transform.rotation);
-
-            
-            /*
-            Debug.Log(cur_angle.ToString() + " " + info.mouse_angle.ToString() + " " + Mathf.DeltaAngle(cur_angle, info.mouse_angle).ToString());
-            Vector3 pivot = transform.position;
-            equipped_item.transform.RotateAround(pivot,Vector3.forward,Time.deltaTime*Mathf.DeltaAngle(cur_angle, info.mouse_angle));
-            */
-
-            //equipped_item.transform.localPosition += Vector3.right * Mathf.PingPong(Time.deltaTime * 1, 1);
-
-            /*
-            float x = Mathf.Lerp(0, 3, Mathf.PingPong(Time.time,1));
-            equipped_item.transform.localPosition = new Vector3(x, 0, 0);
-            */
 
         }
     }
