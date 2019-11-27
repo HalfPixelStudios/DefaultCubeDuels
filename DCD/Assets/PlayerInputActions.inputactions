@@ -46,6 +46,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "P1Use",
+                    "type": "PassThrough",
+                    "id": "44a1dbcd-9920-4eed-a92f-8df616d7b9ec",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "P2Move",
                     "type": "PassThrough",
                     "id": "10872b97-2472-4632-bf9c-74b4ce85b273",
@@ -90,6 +98,14 @@
                     "type": "PassThrough",
                     "id": "4129eb83-2fd9-484e-bc69-699572448e6d",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "P2Use",
+                    "type": "PassThrough",
+                    "id": "d721b528-1c6c-4a52-823a-d157f4619035",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -257,6 +273,28 @@
                     "processors": "",
                     "groups": "Xbox Gamepad",
                     "action": "P2Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf35b133-8b02-45ac-8e64-694e0cf48615",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and mouse",
+                    "action": "P1Use",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51dd99c8-1f2a-4359-9b4f-890d2826a9cf",
+                    "path": "<XInputController>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Gamepad",
+                    "action": "P2Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

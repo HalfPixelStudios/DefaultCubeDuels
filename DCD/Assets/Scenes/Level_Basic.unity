@@ -655,6 +655,7 @@ MonoBehaviour:
   dashInput: 0
   interactInput: 0
   throwInput: 0
+  useInput: 0
 --- !u!1 &606617567
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,9 +825,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpTrigger: {fileID: 1385194349}
-  max_hold_time: 0.15
-  fall_g_multiplier: 3.5
-  lowJump_g_multiplier: 3
+  maxHoldTime: 0.15
+  fallGFactor: 3.5
+  lowJumpGFactor: 3
 --- !u!114 &645899948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,7 +916,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 3.1187709e-12}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -1148,6 +1149,36 @@ MonoBehaviour:
   max_depth: -8
   min_angle: 3
   max_angle: 11
+--- !u!1 &967172394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 967172395}
+  m_Layer: 0
+  m_Name: muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &967172395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967172394}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.20000002, z: 0.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5006512734922333487}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &979423321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,7 +1608,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5006512734922333487}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1674593331
 GameObject:
@@ -2074,9 +2105,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpTrigger: {fileID: 1385194349}
-  max_hold_time: 0.35
-  fall_g_multiplier: 10
-  lowJump_g_multiplier: 2
+  maxHoldTime: 0.35
+  fallGFactor: 10
+  lowJumpGFactor: 2
 --- !u!1 &1983858634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2273,6 +2304,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 383435585}
+  - {fileID: 967172395}
   - {fileID: 1616518489}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -2327,6 +2359,8 @@ GameObject:
   - component: {fileID: 8296172669067669310}
   - component: {fileID: 8296172669067669309}
   - component: {fileID: 8296172669067669311}
+  - component: {fileID: 8296172669067669313}
+  - component: {fileID: 8296172669067669312}
   m_Layer: 0
   m_Name: pistol
   m_TagString: Untagged
@@ -2378,6 +2412,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8296172669067669312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172669067669308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2e790dae5fec44fa6660e48208016b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 1822805292753405009, guid: 5a52ff0c93d62e64298b9d9d75f284ec,
+    type: 3}
+  projectile_spawn_point: {fileID: 967172394}
+  starting_velocity: {x: 2, y: 0, z: 0}
+  fire_cooldown: 0.2
+--- !u!114 &8296172669067669313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8296172669067669308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083846c621373cc4f839a7541d753414, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  duration: 0
+  isActive: 0
 --- !u!4 &8652380847515939618
 Transform:
   m_ObjectHideFlags: 0

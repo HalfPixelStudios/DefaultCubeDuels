@@ -59,6 +59,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""P1Use"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""44a1dbcd-9920-4eed-a92f-8df616d7b9ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""P2Move"",
                     ""type"": ""PassThrough"",
                     ""id"": ""10872b97-2472-4632-bf9c-74b4ce85b273"",
@@ -103,6 +111,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""type"": ""PassThrough"",
                     ""id"": ""4129eb83-2fd9-484e-bc69-699572448e6d"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""P2Use"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d721b528-1c6c-4a52-823a-d157f4619035"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -272,6 +288,28 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""P2Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf35b133-8b02-45ac-8e64-694e0cf48615"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and mouse"",
+                    ""action"": ""P1Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51dd99c8-1f2a-4359-9b4f-890d2826a9cf"",
+                    ""path"": ""<XInputController>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Xbox Gamepad"",
+                    ""action"": ""P2Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -313,12 +351,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_PlayerControls_P1Dash = m_PlayerControls.FindAction("P1Dash", throwIfNotFound: true);
         m_PlayerControls_P1Interact = m_PlayerControls.FindAction("P1Interact", throwIfNotFound: true);
         m_PlayerControls_P1Throw = m_PlayerControls.FindAction("P1Throw", throwIfNotFound: true);
+        m_PlayerControls_P1Use = m_PlayerControls.FindAction("P1Use", throwIfNotFound: true);
         m_PlayerControls_P2Move = m_PlayerControls.FindAction("P2Move", throwIfNotFound: true);
         m_PlayerControls_P2Jump = m_PlayerControls.FindAction("P2Jump", throwIfNotFound: true);
         m_PlayerControls_P2Dash = m_PlayerControls.FindAction("P2Dash", throwIfNotFound: true);
         m_PlayerControls_P2Interact = m_PlayerControls.FindAction("P2Interact", throwIfNotFound: true);
         m_PlayerControls_P2Throw = m_PlayerControls.FindAction("P2Throw", throwIfNotFound: true);
         m_PlayerControls_P2Aim = m_PlayerControls.FindAction("P2Aim", throwIfNotFound: true);
+        m_PlayerControls_P2Use = m_PlayerControls.FindAction("P2Use", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -373,12 +413,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerControls_P1Dash;
     private readonly InputAction m_PlayerControls_P1Interact;
     private readonly InputAction m_PlayerControls_P1Throw;
+    private readonly InputAction m_PlayerControls_P1Use;
     private readonly InputAction m_PlayerControls_P2Move;
     private readonly InputAction m_PlayerControls_P2Jump;
     private readonly InputAction m_PlayerControls_P2Dash;
     private readonly InputAction m_PlayerControls_P2Interact;
     private readonly InputAction m_PlayerControls_P2Throw;
     private readonly InputAction m_PlayerControls_P2Aim;
+    private readonly InputAction m_PlayerControls_P2Use;
     public struct PlayerControlsActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -388,12 +430,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @P1Dash => m_Wrapper.m_PlayerControls_P1Dash;
         public InputAction @P1Interact => m_Wrapper.m_PlayerControls_P1Interact;
         public InputAction @P1Throw => m_Wrapper.m_PlayerControls_P1Throw;
+        public InputAction @P1Use => m_Wrapper.m_PlayerControls_P1Use;
         public InputAction @P2Move => m_Wrapper.m_PlayerControls_P2Move;
         public InputAction @P2Jump => m_Wrapper.m_PlayerControls_P2Jump;
         public InputAction @P2Dash => m_Wrapper.m_PlayerControls_P2Dash;
         public InputAction @P2Interact => m_Wrapper.m_PlayerControls_P2Interact;
         public InputAction @P2Throw => m_Wrapper.m_PlayerControls_P2Throw;
         public InputAction @P2Aim => m_Wrapper.m_PlayerControls_P2Aim;
+        public InputAction @P2Use => m_Wrapper.m_PlayerControls_P2Use;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -418,6 +462,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @P1Throw.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Throw;
                 @P1Throw.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Throw;
                 @P1Throw.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Throw;
+                @P1Use.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Use;
+                @P1Use.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Use;
+                @P1Use.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP1Use;
                 @P2Move.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Move;
                 @P2Move.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Move;
                 @P2Move.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Move;
@@ -436,6 +483,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @P2Aim.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Aim;
                 @P2Aim.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Aim;
                 @P2Aim.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Aim;
+                @P2Use.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Use;
+                @P2Use.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Use;
+                @P2Use.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnP2Use;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -455,6 +505,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @P1Throw.started += instance.OnP1Throw;
                 @P1Throw.performed += instance.OnP1Throw;
                 @P1Throw.canceled += instance.OnP1Throw;
+                @P1Use.started += instance.OnP1Use;
+                @P1Use.performed += instance.OnP1Use;
+                @P1Use.canceled += instance.OnP1Use;
                 @P2Move.started += instance.OnP2Move;
                 @P2Move.performed += instance.OnP2Move;
                 @P2Move.canceled += instance.OnP2Move;
@@ -473,6 +526,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @P2Aim.started += instance.OnP2Aim;
                 @P2Aim.performed += instance.OnP2Aim;
                 @P2Aim.canceled += instance.OnP2Aim;
+                @P2Use.started += instance.OnP2Use;
+                @P2Use.performed += instance.OnP2Use;
+                @P2Use.canceled += instance.OnP2Use;
             }
         }
     }
@@ -502,11 +558,13 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnP1Dash(InputAction.CallbackContext context);
         void OnP1Interact(InputAction.CallbackContext context);
         void OnP1Throw(InputAction.CallbackContext context);
+        void OnP1Use(InputAction.CallbackContext context);
         void OnP2Move(InputAction.CallbackContext context);
         void OnP2Jump(InputAction.CallbackContext context);
         void OnP2Dash(InputAction.CallbackContext context);
         void OnP2Interact(InputAction.CallbackContext context);
         void OnP2Throw(InputAction.CallbackContext context);
         void OnP2Aim(InputAction.CallbackContext context);
+        void OnP2Use(InputAction.CallbackContext context);
     }
 }
