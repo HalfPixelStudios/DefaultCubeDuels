@@ -53,7 +53,8 @@ public class PickupItem : MonoBehaviour {
             hold_point.transform.localPosition=
                 new Vector3( xComp, yComp, hold_point.transform.position.z);
             hold_point.transform.rotation=Quaternion.Euler(info.mouse_angle,-90,0);
-            equipped_item.transform.localRotation=info.mouse_angle>90? Quaternion.Euler(0,90,0):Quaternion.identity;
+            //FIX PLOS
+            equipped_item.transform.localRotation= (info.mouse_angle>90  ? Quaternion.Euler(180,180,0):Quaternion.identity;
 
         }
     }
