@@ -18,21 +18,23 @@ public class Weapon : MonoBehaviour {
     Timer shoot_timer;
 
     void Start() {
-        info = GetComponentInParent<PlayerInfo>();
+        
 
         shoot_timer = GetComponent<Timer>();
         shoot_timer.cooldown = fire_cooldown;
     }
 
     void Update() {
+        info = GetComponentInParent<PlayerInfo>();
+        if (info == null) return;
         
         if (info.useInput >= info.inputThreshold && !shoot_timer.isActive) { //shoot weapon
             shoot_timer.activate();
-
+            
             //spawn projectile
             GameObject p = Instantiate(projectile,projectile_spawn_point.transform.position,Quaternion.identity);
             p.GetComponent<Rigidbody>().velocity = starting_velocity;
-
+            
         }
         
 
