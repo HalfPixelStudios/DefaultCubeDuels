@@ -5,8 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Timer))]
 public class Weapon : MonoBehaviour {
 
-    PlayerInfo info;
-
     //public bool consumable;
 
     public GameObject projectile;
@@ -18,16 +16,15 @@ public class Weapon : MonoBehaviour {
     Timer shoot_timer;
 
     void Start() {
-        
 
         shoot_timer = GetComponent<Timer>();
-        shoot_timer.cooldown = fire_cooldown;
+        shoot_timer.duration = fire_cooldown;
     }
 
     void Update() {
         info = GetComponentInParent<PlayerInfo>();
         if (info == null) return;
-        
+
         if (info.useInput >= info.inputThreshold && !shoot_timer.isActive) { //shoot weapon
             shoot_timer.activate();
             

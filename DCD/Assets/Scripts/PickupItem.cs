@@ -55,6 +55,7 @@ public class PickupItem : MonoBehaviour {
             hold_point.transform.rotation=Quaternion.Euler(info.mouse_angle,-90,0);
             equipped_item.transform.localRotation=info.mouse_angle>90? Quaternion.Euler(90,0,0):Quaternion.identity;
 
+
         }
     }
 
